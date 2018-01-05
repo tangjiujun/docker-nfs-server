@@ -1,6 +1,5 @@
 #!/bin/bash
-
-set -xe
+set -ex
 
 NFS_EXPORT_DIR=${EXPORT_DIR:-"/nfsshare"}
 NFS_EXPORT_OPTS=${EXPORT_OPTS:-"*(rw,fsid=0,insecure,no_root_squash,no_subtree_check,sync)"}
