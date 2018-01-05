@@ -6,7 +6,7 @@
 
 ```bash
 docker run -d --privileged --restart=unless-stopped \
-    -v /local_directory:/nfsshare \
+    -v `pwd`/nfsshare:/nfsshare \
     -p 111:111 -p 111:111/udp \
     -p 2049:2049 -p 2049:2049/udp \
     -p 32765-32768:32765-32768 -p 32765-32768:32765-32768/udp \
