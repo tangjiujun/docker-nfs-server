@@ -1,11 +1,11 @@
 #!/bin/bash
 set -ex
 
-NFS_EXPORT_DIR=${EXPORT_DIR:-"/nfsshare"}
-NFS_EXPORT_OPTS=${EXPORT_OPTS:-"*(rw,fsid=0,insecure,no_root_squash,no_subtree_check,sync)"}
+: ${EXPORT_DIR:="/nfsshare"}
+: ${EXPORT_OPTS:="*(rw,fsid=0,insecure,no_root_squash,no_subtree_check,sync)"}
 
-mkdir -p $NFS_EXPORT_DIR
-echo "$NFS_EXPORT_DIR   $NFS_EXPORT_OPTS" > /etc/exports
+mkdir -p $EXPORT_DIR
+echo "$EXPORT_DIR   $EXPORT_OPTS" > /etc/exports
 
 
 # Fixed nlockmgr port
