@@ -1,19 +1,11 @@
 #!/bin/bash
+set -ex
 
-set -xe
+: ${EXPORT_DIR:="/nfsshare"}
+: ${EXPORT_OPTS:="*(rw,fsid=0,insecure,no_root_squash,no_subtree_check,sync)"}
 
-NFS_EXPORT_DIR="/nfsshare"
-if test -n "$EXPORT_DIR"; then
-    NFS_EXPORT_DIR=$EXPORT_DIR
-fi
-
-NFS_EXPORT_OPTS="*(rw,fsid=0,insecure,no_root_squash,no_subtree_check,sync)"
-if test -n "$EXPORT_OPTS"; then
-    NFS_EXPORT_OPTS=$EXPORT_OPTS
-fi
-
-mkdir -p $NFS_EXPORT_DIR
-echo "$NFS_EXPORT_DIR   $NFS_EXPORT_OPTS" > /etc/exports
+mkdir -p $EXPORT_DIR
+echo "$EXPORT_DIR   $EXPORT_OPTS" > /etc/exports
 
 
 mount -t nfsd nfsd /proc/fs/nfsd
